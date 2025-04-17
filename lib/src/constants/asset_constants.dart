@@ -8,6 +8,7 @@ class AssetConstants {
   static const String sneak = 'assets/images/sneak.png';
   static const String eat = 'assets/images/eat.png';
   static const String attack = 'assets/images/attack.png';
+  static const String back = 'assets/images/cancel.png';
 
   static const String pause = 'assets/images/pause-icon.png';
   static const String skinLight = 'assets/images/skin0.png';

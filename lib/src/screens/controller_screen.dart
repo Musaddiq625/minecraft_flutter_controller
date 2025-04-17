@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_joystick/flutter_joystick.dart';
 import 'package:minecraft_controller/src/constants/asset_constants.dart';
 import 'package:minecraft_controller/src/constants/color_constants.dart';
-import 'package:minecraft_controller/src/enums/keys_enum.dart';
 import 'package:minecraft_controller/src/constants/font_style_constants.dart';
+import 'package:minecraft_controller/src/enums/keys_enum.dart';
 import 'package:minecraft_controller/src/network/udp_controller.dart';
 
 class ControllerScreen extends StatefulWidget {
@@ -91,25 +91,29 @@ class _ControllerScreenState extends State<ControllerScreen> {
     double size = 55.0,
     double padding = 0,
     Widget? widget,
+    bool disabled = false,
   }) {
-    return GestureDetector(
-      onTapUp: (_) => udpController.sendAction(keyEnum, isSinglePress: true),
-      onLongPressStart: (_) =>
-          udpController.sendAction(keyEnum, isLongPress: true),
-      onLongPressUp: () => udpController.sendAction(keyEnum),
-      child: Padding(
-        padding: EdgeInsets.all(padding),
-        child: Container(
-          height: size,
-          width: size,
+    return AbsorbPointer(
+      absorbing: disabled,
+      child: GestureDetector(
+        onTapUp: (_) => udpController.sendAction(keyEnum, isSinglePress: true),
+        onLongPressStart: (_) =>
+            udpController.sendAction(keyEnum, isLongPress: true),
+        onLongPressUp: () => udpController.sendAction(keyEnum),
+        child: Padding(
           padding: EdgeInsets.all(padding),
-          decoration: BoxDecoration(
-              image: DecorationImage(
-            image: keyToAssetMap.containsKey(keyEnum)
-                ? AssetImage(keyToAssetMap[keyEnum]!)
-                : AssetImage(AssetConstants.blankButton),
-          )),
-          child: widget,
+          child: Container(
+            height: size,
+            width: size,
+            padding: EdgeInsets.all(padding),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: keyToAssetMap.containsKey(keyEnum)
+                  ? AssetImage(keyToAssetMap[keyEnum]!)
+                  : AssetImage(AssetConstants.blankButton),
+            )),
+            child: widget,
+          ),
         ),
       ),
     );
@@ -121,22 +125,45 @@ class _ControllerScreenState extends State<ControllerScreen> {
       backgroundColor: Colors.grey[900],
       body: Stack(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: _buildButton(
+                  keyEnum: KeysEnum.inventory,
+                  disabled: true,
+                  size: 40,
+                  widget: Image.asset(
+                    AssetConstants.back,
+                  )
+                ),
+              ),
+            ),
+          ),
           Positioned(
             bottom: 50,
             left: 25,
             child: arrowWidget(),
           ),
-          Positioned(
-            top: 16,
-            left: 0,
-            right: 0,
-            child: _buildButton(
-              keyEnum: KeysEnum.pause,
-              size: 40,
-              widget: Icon(
-                Icons.pause,
-                size: 30,
-                color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: 40,
+                child: _buildButton(
+                  keyEnum: KeysEnum.pause,
+                  size: 40,
+                  widget: Icon(
+                    Icons.pause,
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),

@@ -78,6 +78,36 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
     }
   }
 
+  Color getColor() {
+    switch (status) {
+      case StatusEnum.pending:
+        return Colors.white;
+      case StatusEnum.pinging:
+        return Colors.white;
+      case StatusEnum.noInternet:
+        return Colors.red;
+      case StatusEnum.connected:
+        return Colors.green;
+      case StatusEnum.exception:
+        return Colors.red;
+    }
+  }
+
+  String? validateStatus() {
+    switch (status) {
+      case StatusEnum.pending:
+        return null;
+      case StatusEnum.pinging:
+        return null;
+      case StatusEnum.noInternet:
+        return StringConstants.noInternet;
+      case StatusEnum.connected:
+        return '${StringConstants.connectedOn} ${udpController.serverAddress}';
+      case StatusEnum.exception:
+        return StringConstants.invalidIpOrOffline;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -153,9 +183,19 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
                           StringConstants.serverNote,
                           style: FontStylesConstants.font14(),
                         ),
-                        Text(
-                          '${StringConstants.status}: ${getMessage()}',
-                          style: FontStylesConstants.font14(),
+                        Row(
+                          children: [
+                            Text(
+                              '${StringConstants.status}: ',
+                              style: FontStylesConstants.font14(),
+                            ),
+                            Text(
+                              getMessage(),
+                              style: FontStylesConstants.font14(
+                                color: getColor(),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

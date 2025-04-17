@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
         height: 20,
         width: 110,
         top: size.height - 40,
-        left: size.width - 130,
+        left: size.width - 140,
         child: ValueListenableBuilder(
             valueListenable: showDialog,
             builder: (context, _, __) {

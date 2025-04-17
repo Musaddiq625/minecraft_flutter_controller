@@ -1,6 +1,7 @@
 class AppConstants {
   static const String dev = '/Musaddiq625';
   static const String linkedInLink = 'https://www.linkedin.com/in/musaddiq625';
+  static const String portfolioLink = 'https://musaddiq625.carrd.co';
   static const String githubLink = 'https://github.com/musaddiq625';
   static const String intro = 'Hello 👋🏻\n'
       'My name is Musaddiq Ahmed Khan\n'

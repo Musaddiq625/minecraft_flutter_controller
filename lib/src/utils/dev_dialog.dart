@@ -110,6 +110,10 @@ class DevDialog {
                                           AssetConstants.github,
                                           AppConstants.githubLink,
                                         ),
+                                        _iconWidget(
+                                          AssetConstants.globe,
+                                          AppConstants.portfolioLink,
+                                        ),
                                       ],
                                     ),
                                   )

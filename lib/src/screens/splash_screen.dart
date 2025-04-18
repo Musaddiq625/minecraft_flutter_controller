@@ -23,15 +23,18 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       insertOverlay();
-      await Future.delayed(Duration(milliseconds: 600))
-          .then((_) => setState(() => showFlutterImage = true));
+       await Future.delayed(Duration(milliseconds: 600));
+       await AudioUtils.placeBlockSound();
+       await Future.delayed(Duration(milliseconds: 350));
+      setState(() => showFlutterImage = true);
+       await Future.delayed(Duration(milliseconds: 400));
       await AudioUtils.placeBlockSound();
-      await Future.delayed(Duration(milliseconds: 600))
-          .then((_) => setState(() => showControllerImage = true));
+       await Future.delayed(Duration(milliseconds: 350));
+      setState(() => showControllerImage = true);
+      await Future.delayed(Duration(milliseconds: 100));
       await AudioUtils.placeBlockSound();
-      await Future.delayed(Duration(milliseconds: 200))
-          .then((_) => setState(() => showMineCraftImage = true));
-      await AudioUtils.placeBlockSound();
+       await Future.delayed(Duration(milliseconds: 350));
+      setState(() => showMineCraftImage = true);
       Future.delayed(
         Duration(milliseconds: 1500),
         () => Navigator.pushReplacement(
@@ -54,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
         height: 20,
         width: 110,
         top: size.height - 40,
-        left: size.width - 140,
+        left: size.width - 150,
         child: ValueListenableBuilder(
             valueListenable: showDialog,
             builder: (context, _, __) {

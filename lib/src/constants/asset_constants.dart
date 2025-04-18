@@ -31,6 +31,6 @@ class AssetConstants {
   static const String youtube = 'assets/icons/youtube.png';
 
   /// SOUNDS
-  static const String block = 'sounds/stone-place.ogg';
+  static const String block = 'sounds/stone-place.mp3';
   static const String buttonClick = 'sounds/click.mp3';
 }

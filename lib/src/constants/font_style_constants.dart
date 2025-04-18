@@ -24,6 +24,7 @@ class FontStylesConstants {
 
   static TextStyle font14({
     Color color = ColorConstants.white,
+    bool isUnderline = false,
   }) {
     return TextStyle(
       color: color,
@@ -32,7 +33,7 @@ class FontStylesConstants {
       fontStyle: FontStyle.normal,
       fontWeight: FontWeight.w400,
       shadows: _shadows,
-      decoration: TextDecoration.none,
+      decoration: isUnderline ? TextDecoration.underline : TextDecoration.none,
       fontFamily: "Minecraft Seven v2",
     );
   }

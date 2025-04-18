@@ -4,6 +4,7 @@ class AppConstants {
   static const String githubLink = 'https://github.com/musaddiq625';
   static const String portfolioLink = 'https://musaddiq625.carrd.co';
   static const String youtubeChannelLink = 'https://www.youtube.com/@musaddiq625';
+  static const String serverSetupLink = 'https://github.com/musaddiq625/minecraft_python_controller';
   static const String intro = 'Hello 👋🏻\n'
       'My name is Musaddiq Ahmed Khan\n'
       'Fluttering in Flutter for 5+ years 🎯🦋🔥\n\n'

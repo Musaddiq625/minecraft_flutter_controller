@@ -3,13 +3,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:minecraft_controller/src/constants/app_constants.dart';
 import 'package:minecraft_controller/src/constants/asset_constants.dart';
+import 'package:minecraft_controller/src/constants/color_constants.dart';
 import 'package:minecraft_controller/src/constants/font_style_constants.dart';
 import 'package:minecraft_controller/src/constants/string_constants.dart';
 import 'package:minecraft_controller/src/enums/status_enum.dart';
 import 'package:minecraft_controller/src/network/udp_controller.dart';
 import 'package:minecraft_controller/src/screens/controller_screen.dart';
 import 'package:minecraft_controller/src/utils/logger_utils.dart';
+import 'package:minecraft_controller/src/utils/url_utils.dart';
 import 'package:minecraft_controller/src/utils/validator_utils.dart';
 import 'package:minecraft_controller/src/widgets/button_widget.dart';
 import 'package:minecraft_controller/src/widgets/text_form_field.dart';
@@ -108,6 +111,34 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
     }
   }
 
+  void openHelpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+          backgroundColor: ColorConstants.grey,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Don\'t have the server set up?\n',
+                style: FontStylesConstants.font14(
+                  color: getColor(),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  UrlUtils.launch(AppConstants.serverSetupLink);
+                },
+                child: Text(
+                  'Visit this link for instructions',
+                  style: FontStylesConstants.font14(isUnderline: true),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -124,9 +155,11 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
             resizeToAvoidBottomInset: false,
             backgroundColor: Colors.transparent,
             body: SizedBox(
+              height: MediaQuery.sizeOf(context).height,
               width: MediaQuery.sizeOf(context).width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
                     height: 15,
@@ -178,10 +211,23 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
                     child: Column(
                       spacing: 6,
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          StringConstants.serverNote,
-                          style: FontStylesConstants.font14(),
+                        Row(
+                          children: [
+                            Text(
+                              StringConstants.serverNote,
+                              style: FontStylesConstants.font14(),
+                            ),
+                            Spacer(),
+                            GestureDetector(
+                              onTap: openHelpDialog,
+                              child: Icon(
+                                Icons.help_outline,
+                                color: ColorConstants.white,
+                              ),
+                            )
+                          ],
                         ),
                         Row(
                           children: [
@@ -219,7 +265,7 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
                         },
                         text: StringConstants.startPlaying,
                       ),
-                    )
+                    ),
                 ],
               ),
             ),

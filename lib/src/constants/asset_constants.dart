@@ -28,6 +28,7 @@ class AssetConstants {
   static const String linkedin = 'assets/icons/linkedin.png';
   static const String github = 'assets/icons/github.png';
   static const String globe = 'assets/icons/globe.png';
+  static const String youtube = 'assets/icons/youtube.png';
 
   /// SOUNDS
   static const String block = 'sounds/stone-place.ogg';

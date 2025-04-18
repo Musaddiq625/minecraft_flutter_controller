@@ -114,6 +114,10 @@ class DevDialog {
                                           AssetConstants.globe,
                                           AppConstants.portfolioLink,
                                         ),
+                                        _iconWidget(
+                                          AssetConstants.youtube,
+                                          AppConstants.youtubeChannelLink,
+                                        ),
                                       ],
                                     ),
                                   )

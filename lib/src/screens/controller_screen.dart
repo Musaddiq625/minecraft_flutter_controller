@@ -35,7 +35,6 @@ class _ControllerScreenState extends State<ControllerScreen> {
   @override
   void initState() {
     super.initState();
-    FocusManager.instance.primaryFocus?.unfocus();
     udpController.init(serverAddress: widget.address);
   }
 

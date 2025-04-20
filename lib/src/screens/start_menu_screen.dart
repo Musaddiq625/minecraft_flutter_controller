@@ -254,6 +254,8 @@ class _StartMenuScreenState extends State<StartMenuScreen> {
                     Center(
                       child: ButtonWidget(
                         onPressed: () {
+                          /// adding this to unfocus textfield of this specific context
+                          FocusScope.of(context).unfocus();
                           Navigator.push(
                             context,
                             MaterialPageRoute(

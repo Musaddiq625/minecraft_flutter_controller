@@ -117,7 +117,6 @@ Check the `pubspec.yaml` for the full package list. Core dependencies include:
 ## ⚠️ Minecraft Settings
 
 - Make sure Minecraft is running and focused on your PC.
-
 - Go to Options > Controls > Mouse Settings, and **enable Raw Input** to ensure the game accepts movement commands correctly.
 
 ---

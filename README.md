@@ -124,8 +124,8 @@ Check the `pubspec.yaml` for the full package list. Core dependencies include:
 ## 🧑‍💻 Author & Links
 
 - **Author:** [Musaddiq Ahmed Khan (Musaddiq625)](https://github.com/Musaddiq625)
-- **Flutter App:** https://github.com/Musaddiq625/minecraft_controller.git
-- **Python Backend:** https://github.com/Musaddiq625/minecraft_flutter_controller.git
+- **Flutter App:** https://github.com/Musaddiq625/minecraft_flutter_controller.git
+- **Python Backend:** https://github.com/Musaddiq625/minecraft_python_controller.git
 
 This is just a basic proof of concept to spark your creativity! If you can improve or extend it, feel free to fork and submit a PR.
 
